@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>ألعاب تعليمية للكبار</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #ffeaa7, #fab1a0);
+      padding: 20px;
+      text-align: center;
+      direction: rtl;
+    }
+    h1 {
+      color: #d63031;
+      margin-bottom: 20px;
+    }
+    .question-box {
+      background: #fff;
+      padding: 25px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      border: none;
+      background-color: #fdcb6e;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #ffeaa7;
+    }
+    .correct {
+      color: green;
+      font-weight: bold;
+    }
+    .wrong {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎓 لعبة الأسئلة التعليمية</h1>
+  <h2 id="sectionTitle">الفقرة 1: معلومات عامة</h2>
+
+  <div class="question-box">
+    <p id="questionText">جارٍ تحميل السؤال...</p>
+    <div id="answers"></div>
+    <p id="feedback"></p>
+    <button onclick="nextQuestion()">السؤال التالي</button>
+  </div>
+
+  <button onclick="changeSection(1)">الفقرة 1</button>
+  <button onclick="changeSection(2)">الفقرة 2</button>
+  <button onclick="changeSection(3)">الفقرة 3</button>
+
+  <script>
+    const questions = {
+      1: [
+        ["ما هي عاصمة اليابان؟", "طوكيو"],
+        ["كم عدد قارات العالم؟", "7"],
+        ["ما هو أسرع حيوان بري؟", "الفهد"],
+        ["ما هو أكبر محيط؟", "الهادئ"],
+        ["ما هي لغة البرازيل الرسمية؟", "البرتغالية"],
+        ["ما اسم الكوكب الأحمر؟", "المريخ"],
+        ["كم عدد أضلاع المثلث؟", "3"],
+        ["من هو أول رئيس لمصر؟", "محمد نجيب"],
+        ["ما هو أطول نهر في العالم؟", "النيل"],
+        ["ما هي عملة أمريكا؟", "الدولار"]
+      ],
+      2: [
+        ["من اخترع المصباح الكهربائي؟", "توماس إديسون"],
+        ["من مكتشف الجاذبية؟", "نيوتن"],
+        ["من مخترع الهاتف؟", "غراهام بيل"],
+        ["من بنى الأهرامات؟", "المصريون القدماء"],
+        ["من هو أبو الطب؟", "أبقراط"],
+        ["من اخترع الإنترنت؟", "تيم بيرنرز لي"],
+        ["من أول من طار؟", "الأخوين رايت"],
+        ["من أول من كتب بالحاسوب؟", "دوغلاس إنجلبارت"],
+        ["من أول من استخدم البوصلة؟", "الصينيون"],
+        ["من مخترع السيارة؟", "كارل بنز"]
+      ],
+      3: [
+        ["ما هي عدد أركان الإسلام؟", "5"],
+        ["كم عدد سور القرآن؟", "114"],
+        ["ما اسم خاتم الأنبياء؟", "محمد"],
+        ["ما هو عدد أشهر السنة الهجرية؟", "12"],
+        ["ما اسم أول مسجد بني في الإسلام؟", "قباء"],
+        ["ما هي السورة التي لا تبدأ بالبسملة؟", "التوبة"],
+        ["ما اسم أطول سورة؟", "البقرة"],
+        ["ما هو يوم الجمعة؟", "عيد المسلمين"],
+        ["ما اسم ملك الموت؟", "عزرائيل"],
+        ["ما اسم أول إنسان؟", "آدم"]
+      ]
+    };
+
+    let section = 1;
+    let currentQuestion = 0;
+
+    function loadQuestion() {
+      const q = questions[section][currentQuestion];
+      document.getElementById("questionText").textContent = `🟡 ${q[0]}`;
+      document.getElementById("feedback").textContent = "";
+      const answersDiv = document.getElementById("answers");
+      answersDiv.innerHTML = "";
+      const input = document.createElement("input");
+      input.type = "text";
+      input.id = "userAnswer";
+      input.placeholder = "اكتب إجابتك هنا...";
+      answersDiv.appendChild(input);
+      const checkBtn = document.createElement("button");
+      checkBtn.textContent = "تحقق من الإجابة";
+      checkBtn.onclick = checkAnswer;
+      answersDiv.appendChild(checkBtn);
+    }
+
+    function checkAnswer() {
+      const userAnswer = document.getElementById("userAnswer").value.trim();
+      const correctAnswer = questions[section][currentQuestion][1];
+      const feedback = document.getElementById("feedback");
+      if (userAnswer === correctAnswer) {
+        feedback.textContent = "✅ إجابة صحيحة!";
+        feedback.className = "correct";
+      } else {
+        feedback.textContent = `❌ خطأ. الإجابة الصحيحة: ${correctAnswer}`;
+        feedback.className = "wrong";
+      }
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      if (currentQuestion >= questions[section].length) {
+        currentQuestion = 0;
+        alert("تم الوصول لنهاية الفقرة ✅");
+      }
+      loadQuestion();
+    }
+
+    function changeSection(sec) {
+      section = sec;
+      currentQuestion = 0;
+      document.getElementById("sectionTitle").textContent = `الفقرة ${section}: ${getTitle(section)}`;
+      loadQuestion();
+    }
+
+    function getTitle(sec) {
+      switch(sec) {
+        case 1: return "معلومات عامة";
+        case 2: return "ثقافة ومخترعين";
+        case 3: return "دينية وعلمية";
+      }
+    }
+
+    // تحميل أول سؤال عند الفتح
+    window.onload = () => {
+      loadQuestion();
+    }
+  </script>
+
+</body>
+</html>

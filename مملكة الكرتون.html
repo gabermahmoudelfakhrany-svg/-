@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مملكة الكرتون</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom, #fceabb, #f8b500);
+      color: #333;
+      text-align: center;
+    }
+    header {
+      background-color: #ff6f61;
+      padding: 30px 20px;
+      color: white;
+      border-bottom: 6px dashed #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+    nav {
+      margin: 30px 0;
+    }
+    nav a {
+      margin: 0 10px;
+      padding: 12px 25px;
+      background-color: #fff3b0;
+      color: #333;
+      text-decoration: none;
+      border-radius: 12px;
+      border: 2px solid #f7c600;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    nav a:hover {
+      background-color: #ffe066;
+      transform: scale(1.05);
+    }
+    .content {
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      justify-items: center;
+    }
+    .card {
+      background: white;
+      padding: 25px;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-top: 10px;
+    }
+    iframe {
+      width: 100%;
+      height: 220px;
+      border-radius: 15px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 17px;
+      margin-top: 15px;
+      background-color: #ffcc00;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #ffdb4d;
+      transform: scale(1.05);
+    }
+    footer {
+      background-color: #ff6f61;
+      color: white;
+      padding: 20px;
+      margin-top: 50px;
+      border-top: 6px dashed #fff;
+      font-size: 16px;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎉 مرحباً بك في مملكة الكرتون 🎨</h1>
+  </header>
+
+  <nav>
+    <a href="#images">الصور</a>
+    <a href="#games">الألعاب</a>
+    <a href="#videos">الفيديو</a>
+    <a href="#card">بطاقتي</a>
+  </nav>
+
+  <div class="content">
+    <section id="images" class="card">
+      <h2>🖼️ صور كرتونية ممتعة</h2>
+      <p>هنا تقدر تشوف صور لشخصيات كرتونية مشهورة.</p>
+      <img src="https://i.pinimg.com/originals/7f/0e/3e/7f0e3edc0eae13dc5e9ed7d11eecf0ed.png" alt="شخصية كرتونية">
+    </section>
+
+    <section id="games" class="card">
+      <h2>🎮 ألعاب مرحة</h2>
+      <p>جرب ألعاب ترفيهية وتعليمية بشكل كرتوني!</p>
+      <button onclick="window.location.href='game.html'">ابدأ اللعب</button>
+    </section>
+
+    <section id="videos" class="card">
+      <h2>📺 فيديوهات كرتون</h2>
+      <p>شاهد أفضل الحلقات واللقطات المضحكة.</p>
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <section id="card" class="card">
+      <h2>💳 بطاقتي الكرتونية</h2>
+      <p>صمم بطاقتك الشخصية على شكل كرتون!</p>
+      <button onclick="window.location.href='card.html'">صمم بطاقتك</button>
+    </section>
+  </div>
+
+  <footer>
+    <p>جميع الحقوق محفوظة © جابر 2025</p>
+  </footer>
+</body>
+</html>
